@@ -67,7 +67,6 @@ jobs:
 
   build-arm:
     runs-on: ubuntu-latest
-    if: ${{ inputs.lnav_version_number != '' }}
     strategy:
       matrix:
         include:
@@ -91,7 +90,6 @@ jobs:
           options: -v ${{ github.workspace }}:/lnav -e GITHUB_WORKSPACE=/lnav --platform ${{ matrix.container-platform }}
           run: /entrypoint.sh
       - name: Build musl package
-        if: ${{ inputs.lnav_version_number != '' }}
         run: >-
           cd ${{ github.workspace }}
           mkdir ${{ env.LNAV_BASENAME }} &&
